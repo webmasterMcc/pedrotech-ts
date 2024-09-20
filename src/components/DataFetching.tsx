@@ -8,14 +8,21 @@ function DataFetching() {
     const [data, setData] = useState<string|number|boolean[]>([]);
 
     useEffect(() => {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
-        .then(response => {
-         setData(response.data)
-          console.log(response.data);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+        function fetchData(){
+            axios.get('https://jsonplaceholder.typicode.com/posts')
+            .then(response => {
+             setData(response.data)
+              console.log(response.data);
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        }
+
+        return (
+            fetchData() 
+        )
+       
     },[]);
 
 
